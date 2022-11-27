@@ -1,12 +1,12 @@
 package be.pxl.coronavirus.controller;
 
-import be.pxl.coronavirus.domain.Patient;
 import be.pxl.coronavirus.domain.request.PatientRequest;
 import be.pxl.coronavirus.domain.request.VirusTestRequest;
 import be.pxl.coronavirus.domain.response.PatientQuarantinedResponse;
 import be.pxl.coronavirus.domain.response.PatientResponse;
 import be.pxl.coronavirus.domain.response.VirusTestResponse;
-import be.pxl.coronavirus.service.contracts.IDoctorService;
+import be.pxl.coronavirus.service.ImplDoctorService;
+import be.pxl.coronavirus.service.contracts.DoctorService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -20,7 +20,7 @@ import java.util.List;
 @Slf4j
 public class DoctorController {
 
-    private final IDoctorService doctorService;
+    private final ImplDoctorService doctorService;
 
     @PostMapping("/doctor/{doctorId}/addPatient")
     @ResponseStatus(HttpStatus.CREATED)

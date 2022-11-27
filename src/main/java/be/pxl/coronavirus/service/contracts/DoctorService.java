@@ -1,6 +1,5 @@
 package be.pxl.coronavirus.service.contracts;
 
-import be.pxl.coronavirus.domain.Patient;
 import be.pxl.coronavirus.domain.request.PatientRequest;
 import be.pxl.coronavirus.domain.request.VirusTestRequest;
 import be.pxl.coronavirus.domain.response.PatientQuarantinedResponse;
@@ -9,7 +8,7 @@ import be.pxl.coronavirus.domain.response.VirusTestResponse;
 
 import java.util.List;
 
-public interface IDoctorService {
+public interface DoctorService {
     PatientResponse addPatientToDoctor(Long doctorId, PatientRequest patientRequest);
     PatientResponse getPatientByDoctorAndId(Long doctorId, Long patientId);
 

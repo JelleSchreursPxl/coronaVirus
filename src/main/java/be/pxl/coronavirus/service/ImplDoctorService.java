@@ -12,7 +12,6 @@ import be.pxl.coronavirus.exception.DoctorException;
 import be.pxl.coronavirus.repository.DoctorRepository;
 import be.pxl.coronavirus.repository.PatientRepository;
 import be.pxl.coronavirus.repository.VirusTestRepository;
-import be.pxl.coronavirus.service.contracts.IDoctorService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.annotation.Secured;
@@ -28,7 +27,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Transactional
 @Slf4j
-public class DoctorService implements IDoctorService {
+public class ImplDoctorService implements be.pxl.coronavirus.service.contracts.DoctorService {
     private final DoctorRepository doctorRepository;
     private final PatientRepository patientRepository;
     private final VirusTestRepository virusTestRepository;
@@ -90,7 +89,9 @@ public class DoctorService implements IDoctorService {
     @Secured("ROLE_DOCTOR")
     public PatientResponse updatePatientVirusTests(Long patientId, VirusTestRequest virusTestRequest) {
         Patient patient = findPatientById(patientId);
-        VirusTest virusTest = VirusTest.builder().virusName(virusTestRequest.getVirusName()).testResult(virusTestRequest.isTestResult()).build();
+        VirusTest virusTest = VirusTest.builder()
+                .virusName(virusTestRequest.getVirusName())
+                .testResult(virusTestRequest.isTestResult()).build();
 
         List<VirusTest> virusTests = patient.getVirusTests();
         virusTests.add(virusTest);
